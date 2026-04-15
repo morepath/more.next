@@ -1,2 +1,2 @@
-include *.txt *.rst *.cfg *.py *.ini *.yaml .flake8
+include *.txt *.rst .flake8
 recursive-include more *.py
