@@ -20,7 +20,6 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: Implementation :: PyPy",
     "Development Status :: 3 - Alpha",
 ]
 requires-python = ">= 3.13"
@@ -69,7 +68,6 @@ env_list = [
     "py312",
     "py313",
     "py314",
-    "pypy3",
     "coverage",
     "lint",
 ]
@@ -78,20 +76,20 @@ skip_missing_interpreters = true
 [tool.tox.env_run_base]
 package = "editable"
 extras = ["test"]
-commands = [["pytest", "{posargs:morepath}"]]
+commands = [["pytest", "{posargs:more/next}"]]
 
 [tool.tox.env.coverage]
 base_python = ["python3.13"]
 extras = ["test", "coverage"]
 commands = [
-    ["pytest", "--cov", "--cov-fail-under=99", "{posargs:morepath}"],
+    ["pytest", "--cov", "--cov-fail-under=99", "{posargs:more/next}"],
 ]
 
 [tool.tox.env.lint]
 base_python = ["python3.13"]
 extras = ["lint"]
 commands = [
-    ["flake8", "morepath"],
+    ["flake8", "more/next"],
     ["black", "--check", "--diff", "--color", "."],
     ["isort", "--diff", "."],
 ]

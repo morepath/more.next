@@ -26,8 +26,6 @@ jobs:
             python-version: "3.13"
           - tox-env: "py314"
             python-version: "3.14"
-          - tox-env: "pypy3"
-            python-version: "pypy-3.13"
           - tox-env: "coverage"
             python-version: "3.13"
           - tox-env: "lint"
