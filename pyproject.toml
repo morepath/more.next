@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "more.next"
-version = "0.1.0"
+version = "0.1.1.dev0"
 dynamic = ["readme"]
 description = "NextORM integration in Morepath"
 license = "BSD-3-Clause"
