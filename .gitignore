@@ -1,0 +1,23 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[co]
+
+# Distribution / packaging
+*.egg-info/
+/build/
+/dist/
+pip-wheel-metadata
+
+# Virtualenv
+/env/
+/venv/
+/.venv/
+
+# Unit test / coverage reports
+.*cache
+.coverage
+htmlcov
+.tox
+
+# Editors
+.vscode

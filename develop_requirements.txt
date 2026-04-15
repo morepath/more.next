@@ -1,0 +1,6 @@
+# development
+-e '.[test,coverage,lint]'
+tox >= 2.4.1
+
+# releaser
+zest.releaser[recommended]
