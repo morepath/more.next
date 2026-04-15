@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.1.1 (unreleased)
+0.1.1 (2026-04-16)
 ------------------
 
 - Remove support for pypy3 and adjust configuration
