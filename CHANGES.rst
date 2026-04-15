@@ -4,7 +4,8 @@ CHANGES
 0.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove support for pypy3 and adjust configuration
+- Adjust allowed python version to minimum 3.12
 
 
 0.1.0 (2026-04-15)
