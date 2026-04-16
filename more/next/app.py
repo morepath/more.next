@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Callable
+
 import morepath
 from nextorm import TransactionError, db_session
 
@@ -21,7 +23,10 @@ def get_next_settings() -> dict[str, int | bool | list[type[TransactionError]]]:
 
 
 @App.tween_factory(over=morepath.EXCVIEW)
-def next_tween_factory(app, handler):
+def next_tween_factory(
+    app: App,
+    handler: Callable[[morepath.Request], morepath.Response],
+) -> Callable[[morepath.Request], morepath.Response]:
     @db_session(
         allowed_exceptions=app.settings.next.allowed_exceptions,
         immediate=app.settings.next.immediate,
@@ -30,7 +35,7 @@ def next_tween_factory(app, handler):
         serializable=app.settings.next.serializable,
         strict=app.settings.next.strict,
     )
-    def next_tween(request):
+    def next_tween(request: morepath.Request) -> morepath.Response:
         return handler(request)
 
     return next_tween
