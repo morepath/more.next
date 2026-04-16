@@ -260,8 +260,8 @@ The drawback is that you don't have easy access to the
 request or app in the model.
 
 
-.. _NextORM: https://nextorm.com
-.. _NextORM API documentation: https://nextorm.readthedocs.io/en/latest/api/session.html`
+.. _NextORM: https://nextorm.readthedocs.io
+.. _NextORM API documentation: https://nextorm.readthedocs.io/en/latest/api/session.html
 .. _NextORM documentation: https://nextorm.readthedocs.io/en/latest/api/database.html
 .. _more.emit: https://github.com/morepath/more.emit
 .. _lifetime-hooks: https://nextorm.readthedocs.io/en/latest/entities.html#lifetime-hooks
