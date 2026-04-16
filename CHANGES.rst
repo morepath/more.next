@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.1.2 (unreleased)
+0.1.2 (2026-04-16)
 ------------------
 
 - Add missing typings and declare more.next as typed package.
