@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "more.next"
-version = "0.1.3.dev0"
+version = "0.2.0.dev0"
 dynamic = ["readme"]
 description = "NextORM integration in Morepath"
 license = "BSD-3-Clause"
@@ -29,10 +29,10 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/morepath/more.next/blob/master/README.md"
+Documentation = "https://github.com/morepath/more.next/blob/master/README.rst"
 Repository = "https://github.com/morepath/more.next"
 Issues = "https://github.com/morepath/more.next/issues"
-Changelog = "https://github.com/morepath/more.next/blob/master/CHANGES.txt"
+Changelog = "https://github.com/morepath/more.next/blob/master/CHANGES.rst"
 
 [project.optional-dependencies]
 test = ["pytest >= 8", "WebTest >= 2.0.14", "pytest-env"]
@@ -45,7 +45,7 @@ include = ["more*"]
 namespaces = true 
 
 [tool.setuptools.dynamic]
-readme = {file = ["README.rst", "CHANGES.txt"]}
+readme = {file = ["README.rst", "CHANGES.rst"]}
 
 [tool.pytest.ini_options]
 addopts = [
