@@ -68,6 +68,7 @@ env_list = [
     "py314",
     "coverage",
     "lint",
+    "pre-commit",
 ]
 skip_missing_interpreters = true
 
@@ -80,7 +81,7 @@ commands = [["pytest", "{posargs:src}"]]
 base_python = ["python3.13"]
 extras = ["test", "coverage"]
 commands = [
-    ["pytest", "--cov", "--cov-fail-under=99", "{posargs:src}"],
+    ["pytest", "--cov", "--cov-fail-under=100", "{posargs:src}"],
 ]
 
 [tool.tox.env.lint]
@@ -90,6 +91,14 @@ commands = [
     ["flake8", "src"],
     ["black", "--check", "--diff", "--color", "."],
     ["isort", "--diff", "."],
+]
+
+[tool.tox.env.pre-commit]
+base_python = ["python3.13"]
+package = "skip"
+deps = ["pre-commit"]
+commands = [
+    ["pre-commit", "run", "--all-files"],
 ]
 
 [tool.black]

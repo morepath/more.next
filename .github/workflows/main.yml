@@ -22,6 +22,8 @@ jobs:
             python-version: "3.13"
           - tox-env: "lint"
             python-version: "3.13"
+          - tox-env: "pre-commit"
+            python-version: "3.13"
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

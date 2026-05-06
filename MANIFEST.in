@@ -1,2 +1,2 @@
-include *.txt *.rst .flake8
+include *.txt *.rst .flake8 *.yaml
 recursive-include src *.py

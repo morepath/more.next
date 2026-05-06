@@ -5,6 +5,7 @@ CHANGES
 ------------------
 
 - Switch to src-layout.
+- Add pre-commit and tox environment for it.
 
 
 0.1.2 (2026-04-16)
