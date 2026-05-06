@@ -40,9 +40,7 @@ coverage = ["pytest-cov"]
 lint = ["black", "flake8", "isort"]
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["more*"]
-namespaces = true 
+where = ["src"]
 
 [tool.setuptools.dynamic]
 readme = {file = ["README.rst", "CHANGES.rst"]}
@@ -56,14 +54,14 @@ pythonpath = ["."]
 env = ["RUN_ENV=test"]
 
 [tool.coverage.run]
-omit = ["more/next/tests/*"]
-source = ["more.next"]
+omit = ["src/more/next/tests/*"]
+source = ["src"]
 
 [tool.coverage.report]
 show_missing = true
 
 [tool.tox]
-requires = ["tox>=4"]
+requires = ["tox>=4.21.1"]
 env_list = [
     "py312",
     "py313",
@@ -76,20 +74,20 @@ skip_missing_interpreters = true
 [tool.tox.env_run_base]
 package = "editable"
 extras = ["test"]
-commands = [["pytest", "{posargs:more/next}"]]
+commands = [["pytest", "{posargs:src}"]]
 
 [tool.tox.env.coverage]
 base_python = ["python3.13"]
 extras = ["test", "coverage"]
 commands = [
-    ["pytest", "--cov", "--cov-fail-under=99", "{posargs:more/next}"],
+    ["pytest", "--cov", "--cov-fail-under=99", "{posargs:src}"],
 ]
 
 [tool.tox.env.lint]
 base_python = ["python3.13"]
 extras = ["lint"]
 commands = [
-    ["flake8", "more/next"],
+    ["flake8", "src"],
     ["black", "--check", "--diff", "--color", "."],
     ["isort", "--diff", "."],
 ]
@@ -109,7 +107,6 @@ exclude = '''
     | __pycache__
     | build
     | dist
-    | src
   )/
 )
 '''

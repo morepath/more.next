@@ -1,2 +1,2 @@
 include *.txt *.rst .flake8
-recursive-include more *.py
+recursive-include src *.py
