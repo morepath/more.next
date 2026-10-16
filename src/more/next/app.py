@@ -1,9 +1,13 @@
 from __future__ import annotations
 
-from collections.abc import Callable
+from typing import TYPE_CHECKING
+
+from nextorm import TransactionError, db_session
 
 import morepath
-from nextorm import TransactionError, db_session
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 class App(morepath.App):
