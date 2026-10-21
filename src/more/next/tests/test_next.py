@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import json
+from typing import TYPE_CHECKING, Any
 
 import pytest
 from nextorm import (
@@ -13,9 +16,12 @@ from webtest import TestApp as Client
 
 from more.next import NextApp
 
+if TYPE_CHECKING:
+    from morepath import Request
 
-def test_query_document():
-    db = Database()
+
+def test_query_document() -> None:
+    db: Database = Database()
 
     class Document(Entity):
         _table_ = "document"
@@ -35,11 +41,11 @@ def test_query_document():
         pass
 
     @App.path(model=Document, path="documents/{id}")
-    def get_document(request, id=0):
+    def get_document(request: Request[App], id: int = 0) -> Document:
         return Document[id]
 
     @App.json(model=Document)
-    def document_default(self, request):
+    def document_default(self: Document, request: Request) -> dict[str, Any]:
         return {
             "id": self.id,
             "title": self.title,
@@ -47,7 +53,7 @@ def test_query_document():
             "link": request.link(self),
         }
 
-    c = Client(App())
+    c: Client = Client(App())
 
     response = c.get("/documents/1")
 
@@ -59,8 +65,8 @@ def test_query_document():
     }
 
 
-def test_update_document():
-    db = Database()
+def test_update_document() -> None:
+    db: Database = Database()
 
     class Document(Entity):
         _table_ = "document"
@@ -69,8 +75,9 @@ def test_update_document():
         title: Opt[str]
         content: Opt[str]
 
-        def update(self, payload={}):
-            self.set(**payload)
+        def update(self: Document, payload: dict[str, Any] | None = None) -> None:
+            if payload is not None:
+                self.set(**payload)
 
     db.bind("sqlite", ":memory:")
     db.generate_mapping(create_tables=True)
@@ -83,11 +90,11 @@ def test_update_document():
         pass
 
     @App.path(model=Document, path="documents/{id}")
-    def get_document(request, id=0):
+    def get_document(request: Request, id: int = 0) -> Document:
         return Document[id]
 
     @App.json(model=Document)
-    def document_default(self, request):
+    def document_default(self: Document, request: Request[App]) -> dict[str, Any]:
         return {
             "id": self.id,
             "title": self.title,
@@ -96,10 +103,10 @@ def test_update_document():
         }
 
     @App.json(model=Document, request_method="PUT")
-    def document_update(self, request):
+    def document_update(self: Document, request: Request[App]) -> None:
         self.update(request.json)
 
-    c = Client(App())
+    c: Client = Client(App())
 
     c.put("/documents/1", json.dumps({"title": "New Title"}))
 
@@ -113,8 +120,8 @@ def test_update_document():
     }
 
 
-def test_delete_document():
-    db = Database()
+def test_delete_document() -> None:
+    db: Database = Database()
 
     class Document(Entity):
         _table_ = "document"
@@ -123,7 +130,7 @@ def test_delete_document():
         title: Opt[str]
         content: Opt[str]
 
-        def remove(self):
+        def remove(self: Document) -> None:
             self.delete()
 
     db.bind("sqlite", ":memory:")
@@ -137,18 +144,18 @@ def test_delete_document():
         pass
 
     @App.path(model=Document, path="documents/{id}")
-    def get_document(request, id=0):
+    def get_document(request: Request, id: int = 0) -> Document:
         return Document[id]
 
     @App.json(model=Document)
-    def document_default(self, request):
+    def document_default(self: Document, request: Request) -> dict[str, Any]:
         return {"id": self.id}
 
     @App.json(model=Document, request_method="DELETE")
-    def document_remove(self, request):
+    def document_remove(self: Document, request: Request) -> None:
         self.remove()
 
-    c = Client(App())
+    c: Client = Client(App())
 
     c.delete("/documents/1")
 
